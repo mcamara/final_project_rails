@@ -1,5 +1,27 @@
 {
   "name": "final_project_rails",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "webpack": "^4.20.2"
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phuongtudang/final_project_rails.git"
+  },
+  "author": "Phuong Dang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phuongtudang/final_project_rails/issues"
+  },
+  "homepage": "https://github.com/phuongtudang/final_project_rails#readme"
 }
