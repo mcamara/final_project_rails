@@ -1,1 +1,7 @@
 <h1>Home</h1>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<%= url_for(@user.avatar) %>" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text"><%= @user.email %></p>
+  </div>
+</div>
