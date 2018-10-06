@@ -20,7 +20,10 @@
           <ul class="navbar-nav mr-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'Profile', edit_user_registration_url, class: "nav-link" %>
+                <%= link_to 'Profile', profile_url, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Settings', edit_user_registration_url, class: "nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to 'Sign Out', destroy_user_session_url, method: :delete, class: "nav-link" %>
@@ -39,22 +42,21 @@
               Welcome back, <%= current_user.display_name %>!
             <% end %>
           </span>
+          <%= link_to 'Upload', new_photo_url, class: "btn btn-outline-light" %>
         </div>
       </nav>
-      <div class="row justify-content-md-center">
-        <div>
-          <% if notice %>
-            <div class="alert alert-success" role="alert">
-              <%= notice %>
-            </div>
-          <% elsif alert %>
-            <div class="alert alert-danger" role="alert">
-              <%= alert %>
-            </div>
-          <% end %>
-          <%= yield %>
-        <div>
+      <div class="alert">
+        <% if notice %>
+          <div class="alert alert-success" role="alert">
+            <%= notice %>
+          </div>
+        <% elsif alert %>
+          <div class="alert alert-danger" role="alert">
+            <%= alert %>
+          </div>
+        <% end %>
       </div>
+      <%= yield %>
     </div>
   </body>
 </html>

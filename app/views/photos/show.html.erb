@@ -1,0 +1,13 @@
+<div class="row justify-content-md-center">
+  <div class="card" style="width: 500px">
+    <div class="card-header">
+      <%= @photo.title %>
+      <p class="card-text float-right"><small class="text-muted">by <%= @photo.user.username %></small></p>
+    </div>
+    <div class="card-body">
+      <img class="card-img-top" src="<%= url_for(@photo.image) %>" alt="Card image cap">
+      <p class="card-text"><%= @photo.description %></p>
+      <p class="card-text float-right"><small class="text-muted"><%= time_ago_in_words(@photo.updated_at) %> ago</small></p>
+    </div>
+  </div>
+</div>
