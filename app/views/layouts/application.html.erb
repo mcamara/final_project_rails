@@ -20,7 +20,7 @@
           <ul class="navbar-nav mr-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'Profile', profile_url, class: "nav-link" %>
+                <%= link_to 'Profile', edit_user_registration_url, class: "nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to 'Sign Out', destroy_user_session_url, method: :delete, class: "nav-link" %>
@@ -41,7 +41,7 @@
           </span>
         </div>
       </nav>
-      <div class="row justify-content-md-center"">
+      <div class="row justify-content-md-center">
         <div>
           <% if notice %>
             <div class="alert alert-success" role="alert">
