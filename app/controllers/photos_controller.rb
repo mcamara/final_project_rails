@@ -7,6 +7,7 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    @comments = Comment.where(photo: @photo)
   end
 
   def new
@@ -17,14 +18,11 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @photo.user = current_user
 
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully uploaded!' }
-        format.json { render :show, status: :created, location: @photo }
-      else
-        format.html { render :new }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    if @photo.save
+      flash[:success] = "Photo successfully uploaded!"
+      redirect_to photo_path(@photo)
+    else
+      render 'new'
     end
   end
  

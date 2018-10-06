@@ -5,7 +5,7 @@
     <div class="col-3">
       <div class="card" style="width: 250px">
         <div class="card-header">
-          <%= photo.title %>
+          <%= link_to photo.title, photo_url(photo) %>
           <p class="card-text float-right"><small class="text-muted">by <%= photo.user.username %></small></p>
         </div>
         <div class="card-body">

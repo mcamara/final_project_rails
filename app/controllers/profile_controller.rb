@@ -3,11 +3,7 @@ class ProfileController < ApplicationController
   
   def index
     @user = current_user
-  end
-
-  def update
-    current_user.update(user_params)
-    redirect_to root_path
+    @photos = Photo.where(user: current_user)
   end
 
   private

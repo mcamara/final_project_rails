@@ -1,5 +1,5 @@
 <div class="row justify-content-md-center">
-  <div class="card" style="width: 500px">
+  <div class="card" style="width: 300px">
     <div class="card-header">
       <%= @photo.title %>
       <p class="card-text float-right"><small class="text-muted">by <%= @photo.user.username %></small></p>
@@ -9,5 +9,21 @@
       <p class="card-text"><%= @photo.description %></p>
       <p class="card-text float-right"><small class="text-muted"><%= time_ago_in_words(@photo.updated_at) %> ago</small></p>
     </div>
+  </div>
+  <div>
+    <ul class="list-group">
+      <% @comments.each do |comment| %>
+        <li class="list-group-item">
+          <%= comment.user.username %>: <%= comment.body %>
+          <small class="text-muted float-right"><%= time_ago_in_words(comment.updated_at) %> ago</small>
+        </li>
+      <% end %>
+    </ul>
+    <%= form_for([@photo, @photo.comments.build]) do |f| %>
+      <div class="form-group">
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+      <%= f.submit "Comment", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
