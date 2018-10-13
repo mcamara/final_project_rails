@@ -6,7 +6,9 @@
       <ul class="list-group">
         <% @users.each do |user| %>
           <li class="list-group-item align-items-center">
-            <span><img class="card-img-top" id="avatar" src="<%= url_for(user.avatar) %>"></span>
+            <% if user.avatar.attached? %>
+              <span><img class="card-img-top" id="avatar" src="<%= url_for(user.avatar) %>"></span>
+            <% end %>
             <%= user.username %>
             <% if current_user.following?(user) %>
               <%= link_to "Unfollow", relationship_path(id: user.id), method: :delete, class: "btn btn-outline-danger" %>

@@ -10,6 +10,9 @@
     <% @photos.each do |photo| %>
       <div class="col-3">
         <div class="card">
+          <button type="button" class="close" aria-label="Close">
+            <%= link_to "x", photo_url(photo), method: :delete %>
+          </button>
           <% if photo.image.attached? %>
             <img class="card-img-top" src="<%= url_for(photo.image) %>" alt="Card image cap">
           <% end %>
