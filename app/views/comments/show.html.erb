@@ -1,8 +1,10 @@
-<div class="row justify-content-md-center">
-  <div class="card" style="width: 300px">
-    <div class="card-body">
-      <p class="card-text"><%= @comment.body %></p>
-      <p class="card-text float-right"><small class="text-muted"><%= time_ago_in_words(@photo.updated_at) %> ago</small></p>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="card" style="width: 300px">
+      <div class="card-body">
+        <p class="card-text"><%= @comment.body %></p>
+        <p class="card-text float-right"><small class="text-muted"><%= time_ago_in_words(@photo.updated_at) %> ago</small></p>
+      </div>
     </div>
   </div>
 </div>

@@ -1,14 +1,17 @@
 h1,
 h2 {
-  text-align: center;
-  padding: 20px;
+  font-family: 'Raleway', sans-serif;
 }
 
 form {
   background-color: #f8f9fa;
   border-radius: 5px;
+  margin: 30px;
   padding: 30px;
   min-width: 500px;
+  h1, h2 {
+    text-align: center
+  }
 }
 
 button {
@@ -16,14 +19,68 @@ button {
 }
 
 .navbar {
-  margin-bottom: 10px;
   .navbar-text {
     margin-right: 20px;
   }
+}
+
+.main-body {
+  margin-top: 48px;
+  position: relative;
+} 
+
+.photo {
+  margin-top: 100px;
 }
 
 .avatar {
   border-radius: 50%;
   width: 30px;
   height: 30px;
+}
+
+.alert{
+  position: absolute !important;
+  width: 300px;
+  top: 15px;
+  right: 20px;
+  margin-bottom: 0;
+  text-align: center;
+  padding: 10px;
+  border-radius: 0;
+}
+
+.jumbotron{
+  background-image: url(https://images.unsplash.com/photo-1516692935701-4f35bff8b9f6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5e8b07db9ad1b8626288bbbf77471558&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb);
+  background-position: center;
+  color: white;
+  height: 35vh;
+  letter-spacing: 1.55px;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.8);
+  margin-bottom: 0;
+  border-radius: 0 !important
+}
+
+.show-photo {
+  margin: 0;
+  width: 100%;
+  min-width: 100%;
+  border-radius: 0;
+  border: 1px solid rgba(0,0,0,.125);
+  border-top: none
+}
+
+.show-comment {
+  .list-group-item:first-child {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  .list-group-item:last-child {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
 }

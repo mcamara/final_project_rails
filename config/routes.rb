@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
+  get 'users' => 'users#index'
+  get 'friendships/create'
+  get 'friendships/update'
+  get 'friendships/destroy'
   get 'profile' => 'profile#index'
   patch 'profile' => 'profile#update'
 
   devise_for :users
+
   root 'home#index'
+
+  resources :users, only: [:show]
+
   resources :photos do
     resources :comments
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :friendships, only: [:create, :update, :destroy]
 end

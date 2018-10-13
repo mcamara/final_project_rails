@@ -1,20 +1,25 @@
-<h1>Photos Collection</h1>
+<header class="jumbotron">
+  <div class="container">
+    <h1 class="display-4">Photos Collection</h1>
+    <p class="lead">View photos from all our users</p>
+  </div>    
+</header>
 
-<div class="row">
-  <% @photos.each do |photo| %>
-    <div class="col-3">
-      <div class="card" style="width: 250px">
-        <div class="card-header">
-          <%= link_to photo.title, photo_url(photo) %>
-          <p class="card-text float-right"><small class="text-muted">by <%= photo.user.username %></small></p>
-        </div>
-        <div class="card-body">
+<div class="container">
+  <div class="row" style="display:flex; flex-wrap: wrap">
+    <% @photos.each do |photo| %>
+      <div class="col-md-3 col-sm-6">
+        <div class="card">
           <img class="card-img-top" src="<%= url_for(photo.image) %>" alt="Card image cap">
-          <p class="card-text"><%= photo.description %></p>
-          <p class="card-text float-right"><small class="text-muted"><%= time_ago_in_words(photo.updated_at) %> ago</small></p>
+          <div class="card-body" style="padding-bottom:0">
+            <h5 class="card-title" style="text-align:center"><%= link_to photo.title, photo_url(photo) %></h5>
+            <p class="card-text"><%= photo.description %></p>
+            <p class="card-text float-left"><small class="text-muted">by <%= photo.user.username %></small>
+            <p class="card-text float-right"><small class="text-muted"><%= time_ago_in_words(photo.updated_at) %> ago</small></p>
+          </div>
         </div>
-      </div>
-    </div>
-  <% end %>
+      </div>        
+    <% end %>  
+  </div>
 </div>
 
