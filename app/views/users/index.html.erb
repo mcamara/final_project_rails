@@ -1,43 +1,17 @@
-<div class="container">
+<div class="container users">
   <div class="row justify-content-center">
-    <% if @friends.length > 0 %>
-      <div class="col">
-        <h1>Friends</h1>
-        <ul class="list-group">
-          <% @friends.each do |friend| %>
-            <li class="list-group-item">
-              <%= link_to friend.username, user_path(friend) %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <% if current_user.requested_friendships.length > 0 %>
-      <div class="col">
-        <h1>Pending Requests</h1>
-        <ul class="list-group">
-          <% current_user.requested_friendships.each do |request| %>
-            <li class="list-group-item">
-              <%= request.username %>
-              <%= link_to "Decline", friendship_path(id: request.id), method: :delete, class: "btn btn-outline-danger" %>
-              <%= link_to "Accept", friendship_path(id: request.id), method: "put", class: "btn btn-success" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="col">
-      <h1>Add New Friends</h1>
+    <div class="col-6">
+      <h1 style="text-align: center">Follow New Friends</h1>
+      <br>
       <ul class="list-group">
         <% @users.each do |user| %>
-          <li class="list-group-item">
+          <li class="list-group-item align-items-center">
+            <span><img class="card-img-top" id="avatar" src="<%= url_for(user.avatar) %>"></span>
             <%= user.username %>
-            <% if current_user.pending_friends.include?(user) || current_user.requested_friendships.include?(user) %>
-              <button type="button" class="btn btn-outline-warning pending">Pending...</button>
+            <% if current_user.following?(user) %>
+              <%= link_to "Unfollow", relationship_path(id: user.id), method: :delete, class: "btn btn-outline-danger" %>
             <% else %>
-              <%= link_to "Add Friend", friendships_path(friend_id: user), method: :post, class: "btn btn-primary" %>
+              <%= link_to "Follow", relationships_path(followed_id: user), method: :post, class: "btn btn-primary" %>
             <% end %>
           </li>
         <% end %>

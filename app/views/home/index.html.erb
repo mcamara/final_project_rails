@@ -10,7 +10,9 @@
     <% @photos.each do |photo| %>
       <div class="col-md-3 col-sm-6">
         <div class="card">
+        <% if photo.image.attached? %>
           <img class="card-img-top" src="<%= url_for(photo.image) %>" alt="Card image cap">
+        <% end %>
           <div class="card-body" style="padding-bottom:0">
             <h5 class="card-title" style="text-align:center"><%= link_to photo.title, photo_url(photo) %></h5>
             <p class="card-text"><%= photo.description %></p>

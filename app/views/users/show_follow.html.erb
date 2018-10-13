@@ -1,0 +1,22 @@
+<div class="container photo">
+  <div class="row justify-content-md-center">
+    <div class="col-6">
+      <h1>My Followings</h1>
+      <br>
+      <ul class="list-group">
+        <% @users.each do |user| %>
+          <li class="list-group-item d-flex align-items-center">
+            <% if user.avatar.attached? %>
+              <span><img class="card-img-top" id="avatar" src="<%= url_for(user.avatar) %>"></span>
+            <% end %>
+            <%= link_to user.username, user_path(user) %>
+            <% if user.photos.length > 0 %>
+              <span class="badge badge-warning"><%= user.photos.count %></span>
+              <p class="card-text user-update"><small class="text-muted">updated <%= time_ago_in_words(user.photos.last.updated_at) %> ago</small></p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

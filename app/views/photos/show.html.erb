@@ -2,7 +2,9 @@
   <div class="row justify-content-md-center">
     <div class="col-7">
       <div class="card">
-        <img class="card-img-top" src="<%= url_for(@photo.image) %>" alt="Card image cap">
+        <% if @photo.image.attached? %>
+          <img class="card-img-top" src="<%= url_for(@photo.image) %>" alt="Card image cap">
+        <% end %>
         <div class="card-body" style="padding-bottom:0">
           <h5 class="card-title" style="text-align:center"><%= @photo.title %></h5>
           <p class="card-text"><%= @photo.description %></p>
