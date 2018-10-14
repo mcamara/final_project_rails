@@ -22,6 +22,7 @@ class PhotosController < ApplicationController
       flash[:success] = "Photo successfully uploaded!"
       redirect_to photo_path(@photo)
     else
+      flash[:alert] = "Photo is unsuccessfully uploaded!"
       render 'new'
     end
   end
@@ -29,7 +30,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
 	  @photo.destroy
-	  flash[:notice] = "Removed photo."
+	  flash[:alert] = "Removed photo."
 	  redirect_back fallback_location: root_path
 	end
  

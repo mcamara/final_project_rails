@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment successfully added!"
       redirect_to photo_path(@photo)
     else
+      flash[:alert] = "Comment unsuccessfully added!"
       redirect_to photo_path(@photo)
     end
   end
