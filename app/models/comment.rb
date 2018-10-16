@@ -4,4 +4,5 @@ class Comment < ApplicationRecord
 
   validates :photo_id, presence: true
   validates :user_id, presence: true
+  validates :body, presence: true
 end

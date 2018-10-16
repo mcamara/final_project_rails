@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :photo do
-    title { "MyString" }
+    title { Faker::Book.title }
     description { "MyText" }
-    user { nil }
+    user { Faker::Book.author }
   end
 end

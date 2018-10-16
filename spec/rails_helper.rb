@@ -1,5 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'support/controller_macros'
+require 'support/factory_bot'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
@@ -10,15 +12,18 @@ require 'simplecov'
 SimpleCov.start 'rails'
 
 RSpec.configure do |config|
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.extend ControllerMacros, :type => :controller
   # other stuff inside
   config.include FactoryBot::Syntax::Methods # This allows you to call `create` instead of `FactoryBot.create` in the tests
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
 end
 
-require 'support/json_response'
-RSpec.configure do |config|
-  # other stuff inside
-  config.include JsonResponse
-end
+# require 'support/json_response'
+# RSpec.configure do |config|
+#   # other stuff inside
+#   config.include JsonResponse
+# end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -38,6 +43,9 @@ end
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
+FactoryBot::SyntaxRunner.class_eval do
+  include ActionDispatch::TestProcess
+end
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e

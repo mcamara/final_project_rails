@@ -11,7 +11,14 @@
             <% end %>
             <%= link_to user.username, user_path(user) %>
             <% if user.photos.length > 0 %>
-              <span class="badge badge-warning"><%= user.photos.count %></span>
+              <span class="badge badge-warning">
+                <%= user.photos.count %>
+                <% if user.photos.count > 1 %>
+                  photos
+                <% else %>
+                  photo
+                <% end %>  
+              </span>
               <p class="card-text user-update"><small class="text-muted">updated <%= time_ago_in_words(user.photos.last.updated_at) %> ago</small></p>
             <% end %>
           </li>
