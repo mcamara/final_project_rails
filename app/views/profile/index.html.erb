@@ -14,11 +14,11 @@
             <%= link_to "x", photo_url(photo), method: :delete %>
           </button>
           <% if photo.image.attached? %>
-            <img class="card-img-top" src="<%= url_for(photo.image) %>" alt="Card image cap">
+            <img style="height:170px" class="card-img-top" src="<%= url_for(photo.image) %>" alt="Card image cap">
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to photo.title, photo_url(photo) %></h5>
-            <p class="card-text"><%= photo.description %></p>
+            <p class="card-text"><%= truncate(photo.description, length: 25) %></p>
             <p class="card-text float-right"><small class="text-muted"><%= time_ago_in_words(photo.updated_at) %> ago</small></p>
           </div>
         </div>
