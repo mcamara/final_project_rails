@@ -14,8 +14,8 @@ Given("I am in the users page") do
   visit users_url
 end
 
-When("I click on the {string} button") do |photo|
-  click_on photo
+When("I click on the {string} button") do |user|
+  click_on user
 end
 
 Then("I should see {string} details") do |photo|
